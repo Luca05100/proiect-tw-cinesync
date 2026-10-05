@@ -21,14 +21,23 @@
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  
+
+  background-image: 
+    linear-gradient(to bottom, rgba(20, 20, 20, 0.1) 0%, rgba(20, 20, 20, 1) 80%),
+    linear-gradient(to right, rgba(20, 20, 20, 0.8) 0%, rgba(20, 20, 20, 0) 50%, rgba(20, 20, 20, 0.8) 100%),
+    url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop'); /* Înlocuiește cu orice imagine dorești */
+  
+  background-size: cover; 
+  background-position: center top; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  
   color: var(--text);
   line-height: 1.5;
-  /* Împiedicăm scroll-ul pe orizontală al întregii pagini */
   overflow-x: hidden; 
 }
 
-/* HEADER - Arată ca bara de navigație de sus */
 .app-header {
   background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(20,20,20,0) 100%);
   padding: 20px 4%;
@@ -54,7 +63,6 @@ body {
   font-size: 1rem;
 }
 
-/* Container fluid, pe tot ecranul */
 .container {
   max-width: 100%;
   margin: 0;
@@ -64,7 +72,6 @@ body {
   gap: 40px;
 }
 
-/* Panoul formularului - acum integrat fluid, nu o casetă izolată */
 .panel {
   background-color: transparent;
   padding: 0;
@@ -131,7 +138,6 @@ button:active {
   transform: scale(0.95);
 }
 
-/* RÂNDUL NETFLIX - Listă transformată în carusel orizontal */
 .item-list {
   list-style: none;
   padding: 20px 0;
@@ -144,7 +150,6 @@ button:active {
   scroll-behavior: smooth;
 }
 
-/* Ascundem bara de scroll pentru a părea fluid */
 .item-list::-webkit-scrollbar {
   display: none;
 }
@@ -153,9 +158,8 @@ button:active {
   scrollbar-width: none;
 }
 
-/* CARDURILE - Aspect de Thumbnail/Poster (16:9 ratio) */
 .item-card {
-  flex: 0 0 auto; /* Cardurile nu se înghesuie, își mențin mărimea */
+  flex: 0 0 auto; 
   width: 280px; 
   height: 157px; /* Raport aproximativ 16:9 */
   display: flex;
@@ -172,7 +176,7 @@ button:active {
 }
 
 .item-card:hover {
-  transform: scale(1.15) translateY(-5px); /* Se mărește și vine "în față" */
+  transform: scale(1.15) translateY(-5px); 
   z-index: 10;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
   border: 1px solid var(--muted);
@@ -188,7 +192,6 @@ button:active {
   text-overflow: ellipsis;
 }
 
-/* Secțiunea de jos a cardului cu badge și status (pusă orizontal) */
 .item-card-details {
   display: flex;
   justify-content: space-between;
@@ -238,7 +241,6 @@ button:active {
   margin-top: 60px;
 }
 
-/* Responsivitate pentru ecrane mici */
 @media (max-width: 700px) {
   .app-header {
     flex-direction: column;
