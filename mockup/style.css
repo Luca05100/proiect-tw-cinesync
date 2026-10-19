@@ -13,20 +13,19 @@
   --accent-dark: #b20710;
   --border: #333333;
 
-  --color-film: #007bff;
-  --color-serial: #28a745;
-  --color-doc: #ffc107;
+  --color-film: #e50914; 
+  --color-serial: #8e44ad;
+  --color-doc: #2980b9;
 }
 
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   
-
   background-image: 
-    linear-gradient(to bottom, rgba(20, 20, 20, 0.1) 0%, rgba(20, 20, 20, 1) 80%),
-    linear-gradient(to right, rgba(20, 20, 20, 0.8) 0%, rgba(20, 20, 20, 0) 50%, rgba(20, 20, 20, 0.8) 100%),
-    url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop'); /* Înlocuiește cu orice imagine dorești */
+    linear-gradient(to bottom, rgba(20, 20, 20, 0.4) 0%, rgba(20, 20, 20, 1) 80%),
+    linear-gradient(to right, rgba(20, 20, 20, 0.9) 0%, rgba(20, 20, 20, 0.2) 50%, rgba(20, 20, 20, 0.9) 100%),
+    url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop'); 
   
   background-size: cover; 
   background-position: center top; 
@@ -36,33 +35,53 @@ body {
   color: var(--text);
   line-height: 1.5;
   overflow-x: hidden; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* =========================================================
+   HEADER
+   ========================================================= */
 .app-header {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(20,20,20,0) 100%);
-  padding: 20px 4%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(20,20,20,0) 100%);
+  padding: 30px 4%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  gap: 30px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .app-header h1 {
   margin: 0;
   color: var(--accent);
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
 }
 
 .app-header p {
   margin: 0;
   color: var(--text);
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
+.app-count {
+  background-color: rgba(229, 9, 20, 0.2);
+  border: 1px solid var(--accent);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem !important;
+  font-weight: bold;
+}
+
+/* =========================================================
+   CONTAINER & PANELS
+   ========================================================= */
 .container {
   max-width: 100%;
   margin: 0;
@@ -70,6 +89,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  flex: 1;
 }
 
 .panel {
@@ -83,9 +103,12 @@ body {
   margin-bottom: 20px;
   font-size: 1.4rem;
   color: #e5e5e5;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* =========================================================
+   FORMULAR
+   ========================================================= */
 .item-form {
   display: flex;
   flex-direction: row;
@@ -109,7 +132,8 @@ body {
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.5); 
   color: var(--text);
-  min-width: 200px;
+  min-width: 220px;
+  font-size: 1rem;
 }
 
 .item-form input:focus, .item-form select:focus {
@@ -131,11 +155,20 @@ button {
 }
 
 button:hover {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 button:active {
   transform: scale(0.95);
+}
+
+/* =========================================================
+   LISTA DE FILME (CARUSEL)
+   ========================================================= */
+.empty {
+  color: var(--muted);
+  font-size: 1.1rem;
+  padding: 20px 0;
 }
 
 .item-list {
@@ -144,90 +177,98 @@ button:active {
   margin: 0;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 15px;
   overflow-x: auto;
   overflow-y: visible;
   scroll-behavior: smooth;
+  /* Ascunde scrollbar-ul nativ dar păstrează funcționalitatea */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .item-list::-webkit-scrollbar {
   display: none;
 }
-.item-list {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
 
+/* =========================================================
+   CARDUL FILMULUI
+   ========================================================= */
 .item-card {
   flex: 0 0 auto; 
   width: 280px; 
   height: 157px; /* Raport aproximativ 16:9 */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between; /* Spațiază titlul sus și statusul jos */
   align-items: flex-start;
   padding: 16px;
   background-color: var(--card);
-  background-image: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);
+  background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.1) 100%);
   border-radius: 4px;
   transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .item-card:hover {
   transform: scale(1.15) translateY(-5px); 
   z-index: 10;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--muted);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--border);
 }
 
 .item-card h3 {
   margin: 0 0 8px 0;
-  font-size: 16px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.item-card-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
 .badge {
   display: inline-block;
-  font-size: 10px;
-  padding: 3px 6px;
+  font-size: 0.65rem;
+  padding: 3px 8px;
   border-radius: 3px;
   color: white;
   font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .badge-film { background-color: var(--color-film); }
 .badge-serial { background-color: var(--color-serial); }
-.badge-documentar { background-color: var(--color-doc); color: black; }
+.badge-documentar { background-color: var(--color-doc); }
 
 .status {
-  font-size: 12px;
+  font-size: 0.8rem;
   font-weight: bold;
-  color: #fff;
+  color: #46d369; /* Verde Netflix pentru "Match" */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
 }
 
+/* Starea "Vizionat" */
 .item-card.done {
-  opacity: 0.5;
-  filter: grayscale(100%);
+  opacity: 0.6;
+  filter: grayscale(80%);
 }
 
 .item-card.done h3 {
   text-decoration: line-through;
+  color: var(--muted);
 }
 
+.item-card.done .status {
+  color: var(--muted);
+}
+
+/* =========================================================
+   ACCESIBILITATE & FOOTER
+   ========================================================= */
 :focus-visible {
   outline: 2px solid white;
   outline-offset: 2px;
@@ -237,15 +278,17 @@ button:active {
   text-align: center;
   padding: 24px;
   color: var(--muted);
-  font-size: 14px;
-  margin-top: 60px;
+  font-size: 0.85rem;
+  margin-top: auto; /* Împinge footer-ul jos dacă pagina e scurtă */
 }
 
+/* =========================================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================================= */
 @media (max-width: 700px) {
   .app-header {
-    flex-direction: column;
+    align-items: center;
     text-align: center;
-    gap: 10px;
   }
   
   .item-form {
@@ -260,5 +303,9 @@ button:active {
   .item-card {
     width: 220px;
     height: 123px;
+  }
+  
+  .item-card h3 {
+    font-size: 1rem;
   }
 }
