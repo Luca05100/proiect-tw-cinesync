@@ -1,0 +1,16 @@
+// frontend/src/components/FilmList.jsx
+import FilmCard from "./FilmCard.jsx";
+
+export default function FilmList({ filme }) {
+  if (filme.length === 0) {
+    return <p className="empty">Lista de filme este goală.</p>;
+  }
+
+  return (
+    <ul className="item-list">
+      {filme.map((film) => (
+        <FilmCard key={film.id} film={film} />
+      ))}
+    </ul>
+  );
+}
