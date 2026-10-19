@@ -1,3 +1,5 @@
+import FilmList from "./components/FilmList.jsx";
+
 const filme = [
   { id: 1, titlu: "Interstellar", vazut: true, tip: "film" },
   { id: 2, titlu: "Stranger Things", vazut: false, tip: "serial" },
@@ -20,8 +22,9 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>Watchlist-ul meu</h2>
-          {/* Temporar: date brute; componentele apar în Etapa 4 */}
-          <pre>{JSON.stringify(filme, null, 2)}</pre>
+          {/* Prop-ul stânga (filme) este numele pe care îl așteaptă FilmList, 
+              valoarea dreapta ({filme}) este array-ul tău de mai sus */}
+          <FilmList filme={filme} />
         </section>
       </main>
     </>
