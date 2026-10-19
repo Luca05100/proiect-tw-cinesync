@@ -1,5 +1,5 @@
 # Stage 1: AI log
-#Conversation: https://gemini.google.com/app/efa93a5258199700
+# - Conversation: https://gemini.google.com/app/efa93a5258199700
 ## Tools
 - Gemini
 
