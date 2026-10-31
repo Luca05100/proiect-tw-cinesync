@@ -187,7 +187,32 @@ export default function App() {
             </button>
           ))}
         </div>
+{/* FORMULAR ADAUGARE*/ }
+        <form className="item-form" onSubmit={handleAdauga}>
+          <label>
+            <input
+              type="text"
+              value={titluNou}
+              onChange={(e) => setTitluNou(e.target.value)}
+              placeholder="Adaugă un titlu"
+            />
+          </label>
 
+          <label>
+            <select
+              value={tipNou}
+              onChange={(e) => setTipNou(e.target.value)}
+            >
+              <option value="film">Film</option>
+              <option value="serial">Serial</option>
+              <option value="documentar">Documentar</option>
+            </select>
+          </label>
+
+          <button type="submit" className="btn-add">
+            Adaugă
+          </button>
+        </form>
 
         {/* DE VAZUT */}
         <section
