@@ -2,6 +2,7 @@
 
 ## Tools
 - Gemini
+- https://share.gemini.google/qOoBkUtcT4Fh
 
 
 ## Key requests
