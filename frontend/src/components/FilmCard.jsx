@@ -38,7 +38,7 @@ export default function FilmCard({ film, onToggle, onDelete }) {
 
       <div className="item-card-details">
         <span className="status">
-          {film.vazut ? "✓ Vizionat" : "○ De văzut"}
+          {film.vazut ? "✓ Vizionat" : "De văzut"}
         </span>
 
         <button
