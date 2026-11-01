@@ -27,7 +27,7 @@ The list is rendered from the data, through two components:
 - `FilmCard` receives a single item through props and displays it.
 
 ## Stage 5: local state and events
-The application now manages data interactively using `useState` in `App.jsx`.[cite: 4] Users can add new media, toggle the watched status via a controlled checkbox, delete items, and switch between Light and Dark themes directly from the UI.[cite: 2, 4, 6]
+The application now manages data interactively using `useState` in `App.jsx`. Users can add new media, toggle the watched status via a controlled checkbox, delete items, and switch between Light and Dark themes directly from the UI.
 
 ## How to run
     cd frontend
