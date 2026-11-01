@@ -26,6 +26,9 @@ The list is rendered from the data, through two components:
 - `FilmList` receives the whole array and renders one card per item.
 - `FilmCard` receives a single item through props and displays it.
 
+## Stage 5: local state and events
+The application now manages data interactively using `useState` in `App.jsx`.[cite: 4] Users can add new media, toggle the watched status via a controlled checkbox, delete items, and switch between Light and Dark themes directly from the UI.[cite: 2, 4, 6]
+
 ## How to run
     cd frontend
     npm install
@@ -40,7 +43,7 @@ Then open the address printed in the terminal (`http://localhost:5173`).
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
-- [ ] Stage 5: local state and events
+- [x] Stage 5: local state and events
 
 ## AI usage
 Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pure JavaScript array methods and immutability verification in Stage 2, Vite/React setup in Stage 3, and component validation for Stage 4. Full details are documented in `ai-log/`.
@@ -81,3 +84,15 @@ Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pur
 | S4-R5 | state changes the card look | `frontend/src/components/FilmCard.jsx` | toggle a done flag |
 | S4-R6 | README Stage 4 section + AI log | `README.md`, `ai-log/etapa-04.md` | read |
 | S4-R7 | commit "Stage 4" pushed | GitHub commit history | commit history |
+
+### Stage 5 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S5-R1 | local state (`useState`) for list and theme | `frontend/src/App.jsx` | read code |
+| S5-R2 | add form placed above the list | `frontend/src/App.jsx` | test adding item |
+| S5-R3 | controlled checkbox toggles status | `frontend/src/components/FilmCard.jsx` | click checkbox |
+| S5-R4 | delete button removes item | `frontend/src/components/FilmCard.jsx` | click delete button |
+| S5-R5 | theme toggle switches light/dark mode | `frontend/src/App.jsx` | click theme button |
+| S5-R6 | README Stage 5 section + AI log | `README.md`, `ai-log/etapa-05.md` | read |
+| S5-R7 | commit "Stage 5: checklist" pushed | GitHub commit history | commit history |
+```[cite: 3]
