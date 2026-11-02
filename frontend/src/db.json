@@ -1,0 +1,34 @@
+{
+  "filme": [
+    {
+      "id": 1,
+      "titlu": "Interstellar",
+      "vazut": true,
+      "tip": "film"
+    },
+    {
+      "id": 2,
+      "titlu": "Stranger Things",
+      "vazut": false,
+      "tip": "serial"
+    },
+    {
+      "id": 3,
+      "titlu": "Planeta Pământ",
+      "vazut": false,
+      "tip": "documentar"
+    },
+    {
+      "id": 4,
+      "titlu": "Inception",
+      "vazut": false,
+      "tip": "film"
+    },
+    {
+      "id": 5,
+      "titlu": "Breaking Bad",
+      "vazut": true,
+      "tip": "serial"
+    }
+  ]
+}
