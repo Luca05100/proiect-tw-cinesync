@@ -29,10 +29,17 @@ The list is rendered from the data, through two components:
 ## Stage 5: local state and events
 The application now manages data interactively using `useState` in `App.jsx`. Users can add new media, toggle the watched status via a controlled checkbox, delete items, and switch between Light and Dark themes directly from the UI.
 
+## Stage 6: data from a mock API
+The movies are loaded from a `json-server` mock API (`frontend/db.json`, started with `npm run api`) with loading and error states.
+
+## Stage 7: form and validation
+Movies can be added from the page. The form (`FilmForm`) is controlled and validated (required title of max 100 characters, year between 1900 and the current year), and every change (add, toggle, delete) goes to the API before it shows up in the list. `tw.json` and the `data-testid` attributes are used by the automatic check.
+
 ## How to run
     cd frontend
     npm install
-    npm run dev
+    npm run api   # terminal 1: mock API on http://localhost:3001
+    npm run dev   # terminal 2: the app
 
 Then open the address printed in the terminal (`http://localhost:5173`).
 
@@ -44,6 +51,9 @@ Then open the address printed in the terminal (`http://localhost:5173`).
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
+- [x] Stage 6: data from a mock API
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
 
 ## AI usage
 Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pure JavaScript array methods and immutability verification in Stage 2, Vite/React setup in Stage 3, and component validation for Stage 4. Full details are documented in `ai-log/`.
