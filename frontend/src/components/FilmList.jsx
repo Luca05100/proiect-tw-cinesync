@@ -2,7 +2,7 @@ import FilmCard from "./FilmCard.jsx";
 
 export default function FilmList({ filme, onToggle, onDelete }) {
   if (filme.length === 0) {
-    return <p className="empty">Lista de filme este goală.</p>;
+    return <p className="empty" data-testid="empty">Lista de filme este goală.</p>;
   }
 
   return (
