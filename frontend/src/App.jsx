@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import FilmList from "./components/FilmList.jsx";
-import { fetchFilme } from "./api.js";
+import FilmForm from "./components/FilmForm.jsx";
+import { createFilm, deleteFilm, fetchFilme, updateFilm } from "./api.js";
 import "./App.css";
 
 const CHEIE_TEMA = "cinesync-theme";
-const TIPURI = ["film", "serial", "documentar"];
 
 /* Preferința salvată are prioritate față de tema sistemului. */
 function temaInitiala() {
@@ -30,8 +30,6 @@ export default function App() {
 
   const [tema, setTema] = useState(temaInitiala);
   const [filtru, setFiltru] = useState("toate");
-  const [titluNou, setTitluNou] = useState("");
-  const [tipNou, setTipNou] = useState("film");
 
   /* Aplicăm tema inclusiv la prima afișare. */
   useEffect(() => {
@@ -75,53 +73,40 @@ export default function App() {
     };
   }, []);
 
-  /* În Etapa 6, modificările rămân locale și se pierd la refresh. */
-  function handleToggle(id) {
-    setFilme((filmeAnterioare) =>
-      filmeAnterioare.map((film) =>
-        film.id === id ? { ...film, vazut: !film.vazut } : film
-      )
-    );
+  /* Întâi serverul, apoi state-ul: pe ecran ajunge doar ce s-a salvat. */
+  async function handleAdd(film) {
+    const creat = await createFilm(film); // serverul întoarce elementul cu id
+    setFilme((prev) => [...prev, creat]);
   }
 
-  function handleDelete(id) {
-    setFilme((filmeAnterioare) =>
-      filmeAnterioare.filter((film) => film.id !== id)
-    );
+  async function handleToggle(id) {
+    const film = filme.find((f) => f.id === id);
+
+    if (!film) return;
+
+    try {
+      const actualizat = await updateFilm(id, { vazut: !film.vazut });
+      setError(null);
+      setFilme((prev) => prev.map((f) => (f.id === id ? actualizat : f)));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Eroare necunoscută");
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      await deleteFilm(id);
+      setError(null);
+      setFilme((prev) => prev.filter((f) => f.id !== id));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Eroare necunoscută");
+    }
   }
 
   function handleTema() {
     setTema((temaAnterioara) =>
       temaAnterioara === "dark" ? "light" : "dark"
     );
-  }
-
-  function handleAdauga(e) {
-    e.preventDefault();
-
-    const titluCurat = titluNou.trim();
-
-    if (titluCurat === "" || !TIPURI.includes(tipNou)) {
-      return;
-    }
-
-    setFilme((filmeAnterioare) => {
-      const idNou =
-        filmeAnterioare.reduce((max, film) => Math.max(max, film.id), 0) + 1;
-
-      return [
-        ...filmeAnterioare,
-        {
-          id: idNou,
-          titlu: titluCurat,
-          vazut: false,
-          tip: tipNou,
-        },
-      ];
-    });
-
-    setTitluNou("");
-    setTipNou("film");
   }
 
   const deVazut = filme.filter((film) => !film.vazut).length;
@@ -149,7 +134,7 @@ export default function App() {
 
         <p>Filmele tale. Serialele tale. În ritmul tău.</p>
 
-        {!loading && !error && (
+        {!loading && (
           <span className="app-count">
             {filme.length} în listă · {vizionate} văzute
           </span>
@@ -179,24 +164,23 @@ export default function App() {
         {/* STAREA DE ÎNCĂRCARE */}
         {loading && (
           <section className="panel" aria-busy="true">
-            <p className="info" role="status">
+            <p className="info" role="status" data-testid="loading">
               Se încarcă lista de filme și seriale...
             </p>
           </section>
         )}
 
-        {/* STAREA DE EROARE */}
-        {!loading && error && (
+        {/* EROAREA PAGINII: lista rămâne pe ecran dacă o bifare/ștergere eșuează */}
+        {error && (
           <section className="panel">
-            <p className="error" role="alert">
-              Nu am putut încărca datele: {error}. Verifică dacă serverul este
-              pornit cu <code>npm run api</code>, apoi reîncarcă pagina.
+            <p className="error" role="alert" data-testid="error">
+              {error}. Verifică dacă serverul este pornit cu{" "}
+              <code>npm run api</code>.
             </p>
           </section>
         )}
 
-        {/* CONȚINUTUL APARE DOAR DUPĂ ÎNCĂRCAREA REUȘITĂ */}
-        {!loading && !error && (
+        {!loading && (
           <>
             {/* HERO SECTION */}
             {heroFilm && (
@@ -219,89 +203,71 @@ export default function App() {
               </section>
             )}
 
-            {/* FILTRE */}
-            <div className="filter-bar" role="group" aria-label="Filtre">
-              {[
-                { key: "toate", label: "Toate" },
-                { key: "film", label: "Filme" },
-                { key: "serial", label: "Seriale" },
-                { key: "documentar", label: "Documentare" },
-              ].map(({ key, label }) => (
-                <button
-                  key={key}
-                  type="button"
-                  className={`filter-btn${filtru === key ? " active" : ""}`}
-                  onClick={() => setFiltru(key)}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+            {/* FORMULAR ADĂUGARE */}
+            <FilmForm onAdd={handleAdd} />
 
-            {/* FORMULAR ADĂUGARE — LOCAL ÎN ETAPA 6 */}
-            <form className="item-form" onSubmit={handleAdauga}>
-              <label>
-                <input
-                  type="text"
-                  value={titluNou}
-                  onChange={(e) => setTitluNou(e.target.value)}
-                  placeholder="Adaugă un titlu"
-                  aria-label="Titlul filmului sau serialului"
-                />
-              </label>
+            {filme.length === 0 ? (
+              <p className="empty-state" role="status" data-testid="empty">
+                Nu există niciun titlu în colecție.
+              </p>
+            ) : (
+              <>
+                {/* FILTRE */}
+                <div className="filter-bar" role="group" aria-label="Filtre">
+                  {[
+                    { key: "toate", label: "Toate" },
+                    { key: "film", label: "Filme" },
+                    { key: "serial", label: "Seriale" },
+                    { key: "documentar", label: "Documentare" },
+                  ].map(({ key, label }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`filter-btn${filtru === key ? " active" : ""}`}
+                      onClick={() => setFiltru(key)}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
 
-              <label>
-                <select
-                  value={tipNou}
-                  onChange={(e) => setTipNou(e.target.value)}
-                  aria-label="Tipul titlului"
-                >
-                  <option value="film">Film</option>
-                  <option value="serial">Serial</option>
-                  <option value="documentar">Documentar</option>
-                </select>
-              </label>
+                {/* DE VĂZUT */}
+                <section className="panel" aria-labelledby="titlu-de-vazut">
+                  <h2 id="titlu-de-vazut">De văzut</h2>
 
-              <button type="submit" className="btn-add">
-                Adaugă
-              </button>
-            </form>
+                  {filmeFiltrate.length > 0 ? (
+                    <FilmList
+                      filme={filmeFiltrate}
+                      onToggle={handleToggle}
+                      onDelete={handleDelete}
+                    />
+                  ) : (
+                    <p className="empty-state" role="status">
+                      Niciun titlu de văzut
+                      {filtru !== "toate" ? " în această categorie" : ""}.
+                    </p>
+                  )}
+                </section>
 
-            {/* DE VĂZUT */}
-            <section className="panel" aria-labelledby="titlu-de-vazut">
-              <h2 id="titlu-de-vazut">De văzut</h2>
+                {/* VIZIONATE */}
+                <section className="panel" aria-labelledby="titlu-vizionate">
+                  <h2 id="titlu-vizionate">Vizionate</h2>
 
-              {filmeFiltrate.length > 0 ? (
-                <FilmList
-                  filme={filmeFiltrate}
-                  onToggle={handleToggle}
-                  onDelete={handleDelete}
-                />
-              ) : (
-                <p className="empty-state" role="status">
-                  Niciun titlu de văzut
-                  {filtru !== "toate" ? " în această categorie" : ""}.
-                </p>
-              )}
-            </section>
-
-            {/* VIZIONATE */}
-            <section className="panel" aria-labelledby="titlu-vizionate">
-              <h2 id="titlu-vizionate">Vizionate</h2>
-
-              {filmeVizionateFiltrate.length > 0 ? (
-                <FilmList
-                  filme={filmeVizionateFiltrate}
-                  onToggle={handleToggle}
-                  onDelete={handleDelete}
-                />
-              ) : (
-                <p className="empty-state" role="status">
-                  Niciun titlu vizionat
-                  {filtru !== "toate" ? " în această categorie" : ""}.
-                </p>
-              )}
-            </section>
+                  {filmeVizionateFiltrate.length > 0 ? (
+                    <FilmList
+                      filme={filmeVizionateFiltrate}
+                      onToggle={handleToggle}
+                      onDelete={handleDelete}
+                    />
+                  ) : (
+                    <p className="empty-state" role="status">
+                      Niciun titlu vizionat
+                      {filtru !== "toate" ? " în această categorie" : ""}.
+                    </p>
+                  )}
+                </section>
+              </>
+            )}
           </>
         )}
       </main>
@@ -310,7 +276,6 @@ export default function App() {
         <p>
           CineSync · Colecția ta de filme și seriale
           {!loading &&
-            !error &&
             filme.length > 0 &&
             ` · ${vizionate} ${
               vizionate === 1 ? "titlu vizionat" : "titluri vizionate"
