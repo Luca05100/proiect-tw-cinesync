@@ -1,0 +1,6 @@
+{
+  "resource": "filme",
+  "title": "titlu",
+  "done": "vazut",
+  "sample": { "tip": "serial", "an": 2020 }
+}
