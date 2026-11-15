@@ -4,31 +4,36 @@
       "id": 1,
       "titlu": "Interstellar",
       "vazut": true,
-      "tip": "film"
+      "tip": "film",
+      "an": 2014
     },
     {
       "id": 2,
       "titlu": "Stranger Things",
       "vazut": false,
-      "tip": "serial"
+      "tip": "serial",
+      "an": 2016
     },
     {
       "id": 3,
       "titlu": "Planeta Pământ",
       "vazut": false,
-      "tip": "documentar"
+      "tip": "documentar",
+      "an": 2006
     },
     {
       "id": 4,
       "titlu": "Inception",
       "vazut": false,
-      "tip": "film"
+      "tip": "film",
+      "an": 2010
     },
     {
       "id": 5,
       "titlu": "Breaking Bad",
       "vazut": true,
-      "tip": "serial"
+      "tip": "serial",
+      "an": 2008
     }
   ]
 }
