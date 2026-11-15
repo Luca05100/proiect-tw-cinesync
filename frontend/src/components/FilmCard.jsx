@@ -14,12 +14,13 @@ export default function FilmCard({ film, onToggle, onDelete }) {
     : "item-card";
 
   return (
-    <li className={cardClass}>
+    <li className={cardClass} data-testid="item" data-id={film.id}>
       <label className="task-main">
         <input
           type="checkbox"
           checked={film.vazut}
           onChange={() => onToggle(film.id)}
+          data-testid="item-toggle"
           aria-label={
             film.vazut
               ? `Marchează ${film.titlu} ca nevizionat`
@@ -28,11 +29,13 @@ export default function FilmCard({ film, onToggle, onDelete }) {
         />
 
         <div>
-          <h3>{film.titlu}</h3>
+          <h3 data-testid="item-title">{film.titlu}</h3>
 
           <span className={`badge badge-${tip}`}>
             {ETICHETE_TIP[tip]}
           </span>
+
+          {film.an && <span className="year"> {film.an}</span>}
         </div>
       </label>
 
@@ -46,6 +49,7 @@ export default function FilmCard({ film, onToggle, onDelete }) {
           className="btn-danger"
           onClick={() => onDelete(film.id)}
           aria-label={`Șterge ${film.titlu} din colecție`}
+          data-testid="item-delete"
         >
           Șterge
         </button>
