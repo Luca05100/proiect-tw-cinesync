@@ -852,3 +852,35 @@ input[type="checkbox"]:checked::before {
     font-size: 2rem;
   }
 }
+/* Etapa 7: mesaje, buton dezactivat și câmp greșit */
+.error {
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(229, 9, 20, 0.5);
+  border-radius: var(--radius-small);
+  background: rgba(229, 9, 20, 0.15);
+  color: var(--text);
+}
+
+.info {
+  margin: 0;
+  color: var(--muted);
+}
+
+.form-error {
+  flex: 1 1 100%;
+}
+
+.year {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.item-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.item-form input[aria-invalid="true"] {
+  border-color: #e50914;
+}
