@@ -35,6 +35,9 @@ The movies are loaded from a `json-server` mock API (`frontend/db.json`, started
 ## Stage 7: form and validation
 Movies can be added from the page. The form (`FilmForm`) is controlled and validated (required title of max 100 characters, year between 1900 and the current year), and every change (add, toggle, delete) goes to the API before it shows up in the list. `tw.json` and the `data-testid` attributes are used by the automatic check.
 
+## Stage 8: routing and detail page
+Three pages behind React Router: the list (`/`), a detail page at `/filme/:id` that fetches exactly one item from the API, and an about page (`/despre`), plus a 404 page for unknown addresses. A shared `Layout` (header with `NavLink`, `Outlet`, footer) wraps every page. Component styles moved to CSS Modules (`*.module.css` next to each component); `index.css` keeps only the colour variables and the shared classes.
+
 ## How to run
     cd frontend
     npm install
@@ -53,7 +56,8 @@ Then open the address printed in the terminal (`http://localhost:5173`).
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
 
 ## AI usage
 Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pure JavaScript array methods and immutability verification in Stage 2, Vite/React setup in Stage 3, and component validation for Stage 4. Full details are documented in `ai-log/`.
@@ -106,3 +110,15 @@ Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pur
 | S5-R6 | README Stage 5 section + AI log | `README.md`, `ai-log/etapa-05.md` | read |
 | S5-R7 | commit "Stage 5: checklist" pushed | GitHub commit history | commit history |
 ```[cite: 3]
+
+### Stage 8 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S8-R1 | header navigation changes page without reload | `frontend/src/App.jsx`, `frontend/src/components/Layout.jsx#L52-L58` | click links, watch Network |
+| S8-R2 | click on an item opens its detail page | `frontend/src/components/FilmCard.jsx#L26-L34`, `frontend/src/pages/FilmDetaliuPage.jsx` | click a title |
+| S8-R3 | refresh on the detail URL works; missing id shows an error | `frontend/src/pages/FilmDetaliuPage.jsx#L8-L55` | refresh `/filme/1`, open `/filme/999` |
+| S8-R4 | unknown URL shows the app 404 page | `frontend/src/App.jsx#L16` (path="*"), `frontend/src/pages/NotFoundPage.jsx` | open `/ceva` |
+| S8-R5 | each component has its .module.css; index.css only shared styles | `frontend/src/components`, `frontend/src/pages`, `frontend/src/index.css` | read |
+| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route `/<resource>/:id` | `Layout.jsx`, `FilmCard.jsx`, `FilmDetaliuPage.jsx`, `NotFoundPage.jsx` | querySelector in the console |
+| S8-R7 | README Stage 8 section + AI log | `README.MD`, `ai-log/etapa-08.md` | read |
+| S8-R8 | commit "Stage 8" pushed | link to the commit | commit history |
