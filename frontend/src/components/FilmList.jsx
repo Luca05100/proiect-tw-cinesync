@@ -1,4 +1,5 @@
 import FilmCard from "./FilmCard.jsx";
+import styles from "./FilmList.module.css";
 
 export default function FilmList({ filme, onToggle, onDelete }) {
   if (filme.length === 0) {
@@ -6,13 +7,13 @@ export default function FilmList({ filme, onToggle, onDelete }) {
   }
 
   return (
-    <ul className="item-list">
+    <ul className={styles.list}>
       {filme.map((film) => (
-        <FilmCard 
-          key={film.id} 
-          film={film} 
-          onToggle={onToggle} 
-          onDelete={onDelete} 
+        <FilmCard
+          key={film.id}
+          film={film}
+          onToggle={onToggle}
+          onDelete={onDelete}
         />
       ))}
     </ul>

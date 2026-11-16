@@ -1,0 +1,177 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 22px;
+  min-height: 195px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 100% at 100% 0%, var(--accent-soft) 0%, transparent 65%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    var(--surface);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+/* Raza de lumina (Shimmer) care trece peste card la hover */
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 650ms ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  left: 140%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-7px) scale(1.02);
+    border-color: var(--accent-border);
+    box-shadow: var(--shadow-hover);
+  }
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+.main > :not(input) {
+  min-width: 0;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+
+.titleLink {
+  color: var(--text);
+}
+
+.titleLink:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Checkbox rotund cu glow */
+.main input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 0 0 auto;
+  display: grid;
+  place-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  padding: 0;
+  min-height: 0;
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.main input[type="checkbox"]:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  transform: scale(1.08);
+}
+
+.main input[type="checkbox"]::before {
+  content: "✓";
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 900;
+  line-height: 1;
+  transform: scale(0);
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.main input[type="checkbox"]:checked {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.main input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.year {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Film vizionat */
+.done {
+  border-style: dashed;
+  background: var(--surface-soft);
+  opacity: 0.78;
+}
+
+.done .titleLink {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.done .status {
+  color: var(--serial);
+  text-shadow: 0 0 10px var(--serial-glow);
+}

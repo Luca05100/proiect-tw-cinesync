@@ -1,21 +1,15 @@
-const ETICHETE_TIP = {
-  film: "Film",
-  serial: "Serial",
-  documentar: "Documentar",
-};
+import { Link } from "react-router-dom";
+import { ETICHETE_TIP } from "../constants.js";
+import styles from "./FilmCard.module.css";
 
 export default function FilmCard({ film, onToggle, onDelete }) {
-  const tip = Object.hasOwn(ETICHETE_TIP, film.tip)
-    ? film.tip
-    : "film";
+  const tip = Object.hasOwn(ETICHETE_TIP, film.tip) ? film.tip : "film";
 
-  const cardClass = film.vazut
-    ? "item-card done"
-    : "item-card";
+  const cardClass = film.vazut ? `${styles.card} ${styles.done}` : styles.card;
 
   return (
     <li className={cardClass} data-testid="item" data-id={film.id}>
-      <label className="task-main">
+      <div className={styles.main}>
         <input
           type="checkbox"
           checked={film.vazut}
@@ -29,18 +23,24 @@ export default function FilmCard({ film, onToggle, onDelete }) {
         />
 
         <div>
-          <h3 data-testid="item-title">{film.titlu}</h3>
+          <h3 className={styles.title}>
+            <Link
+              to={`/filme/${film.id}`}
+              className={styles.titleLink}
+              data-testid="item-link"
+            >
+              {film.titlu}
+            </Link>
+          </h3>
 
-          <span className={`badge badge-${tip}`}>
-            {ETICHETE_TIP[tip]}
-          </span>
+          <span className={`badge badge-${tip}`}>{ETICHETE_TIP[tip]}</span>
 
-          {film.an && <span className="year"> {film.an}</span>}
+          {film.an && <span className={styles.year}> {film.an}</span>}
         </div>
-      </label>
+      </div>
 
-      <div className="item-card-details">
-        <span className="status">
+      <div className={styles.details}>
+        <span className={styles.status}>
           {film.vazut ? "✓ Vizionat" : "De văzut"}
         </span>
 

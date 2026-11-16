@@ -1,0 +1,42 @@
+.detail {
+  max-width: 640px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.done {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 24px;
+  margin: 0;
+}
+
+.fields dt {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.fields dd {
+  margin: 0;
+}

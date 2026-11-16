@@ -1,10 +1,6 @@
 import { useState } from "react";
-
-const TIPURI = [
-  { value: "film", label: "Film" },
-  { value: "serial", label: "Serial" },
-  { value: "documentar", label: "Documentar" },
-];
+import { TIPURI } from "../constants.js";
+import styles from "./FilmForm.module.css";
 
 const TITLU_MAX = 100;
 const AN_MIN = 1900;
@@ -72,7 +68,7 @@ export default function FilmForm({ onAdd }) {
 
   return (
     <form
-      className="item-form"
+      className={styles.form}
       onSubmit={handleSubmit}
       noValidate
       data-testid="form"
@@ -120,7 +116,7 @@ export default function FilmForm({ onAdd }) {
 
       <button
         type="submit"
-        className="btn-add"
+        className="btn"
         disabled={trimite}
         data-testid="form-submit"
       >
@@ -128,7 +124,7 @@ export default function FilmForm({ onAdd }) {
       </button>
 
       {eroare && (
-        <p className="error form-error" data-testid="form-error">
+        <p className={`error ${styles.formError}`} data-testid="form-error">
           {eroare}
         </p>
       )}

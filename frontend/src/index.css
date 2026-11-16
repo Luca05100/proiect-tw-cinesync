@@ -1,0 +1,399 @@
+/* Stiluri globale: variabile, elemente de bază, clase comune.
+   Stilurile de componentă stau în fișiere *.module.css */
+
+/* TEME SI VARIABILE */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #07080c;
+  --surface: rgba(20, 23, 34, 0.65);
+  --surface-hover: rgba(30, 35, 52, 0.82);
+  --surface-soft: rgba(18, 21, 30, 0.72);
+
+  --text: #f8f9fc;
+  --muted: #9ba3b8;
+
+  --accent: #ff1f44;
+  --accent-hover: #e01035;
+  --accent-soft: rgba(255, 31, 68, 0.18);
+  --accent-border: rgba(255, 31, 68, 0.55);
+  --accent-glow: rgba(255, 31, 68, 0.35);
+
+  --border: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.28);
+
+  --input-bg: rgba(12, 15, 23, 0.85);
+  --header-bg: rgba(7, 8, 12, 0.75);
+
+  --film: #70b5ff;
+  --film-bg: rgba(112, 181, 255, 0.16);
+  --film-glow: rgba(112, 181, 255, 0.25);
+
+  --serial: #5ce6a0;
+  --serial-bg: rgba(92, 230, 160, 0.16);
+  --serial-glow: rgba(92, 230, 160, 0.25);
+
+  --documentar: #ffd166;
+  --documentar-bg: rgba(255, 209, 102, 0.16);
+  --documentar-glow: rgba(255, 209, 102, 0.25);
+
+  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-hover: 0 24px 55px rgba(0, 0, 0, 0.75), 0 0 28px var(--accent-glow);
+
+  --radius: 18px;
+  --radius-small: 10px;
+
+  --page-width: 1360px;
+  --page-gutter: clamp(20px, 5vw, 72px);
+
+  --transition: 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #eef1f8;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-hover: rgba(255, 255, 255, 0.95);
+  --surface-soft: rgba(255, 255, 255, 0.85);
+
+  --text: #151924;
+  --muted: #5a657d;
+
+  --accent: #e0153c;
+  --accent-hover: #bc0d2e;
+  --accent-soft: rgba(224, 21, 60, 0.12);
+  --accent-border: rgba(224, 21, 60, 0.45);
+  --accent-glow: rgba(224, 21, 60, 0.2);
+
+  --border: rgba(21, 25, 36, 0.12);
+  --border-hover: rgba(21, 25, 36, 0.25);
+
+  --input-bg: rgba(244, 246, 252, 0.9);
+  --header-bg: rgba(238, 241, 248, 0.82);
+
+  --film: #1d5bbf;
+  --film-bg: rgba(29, 91, 191, 0.12);
+  --film-glow: rgba(29, 91, 191, 0.15);
+
+  --serial: #157a4c;
+  --serial-bg: rgba(21, 122, 76, 0.12);
+  --serial-glow: rgba(21, 122, 76, 0.15);
+
+  --documentar: #946200;
+  --documentar-bg: rgba(148, 98, 0, 0.14);
+  --documentar-glow: rgba(148, 98, 0, 0.15);
+
+  --shadow-card: 0 12px 32px rgba(25, 35, 60, 0.08);
+  --shadow-hover: 0 20px 45px rgba(25, 35, 60, 0.16), 0 0 24px var(--accent-glow);
+}
+
+/* ANIMATII KEYFRAMES PENTRU FUNDAL */
+
+@keyframes cinemaZoom {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+  100% {
+    transform: scale(1.03) translate(1%, 0);
+  }
+}
+
+@keyframes ambientOrbs {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate(35px, -25px) scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-25px, 20px) scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+/* RESET SI BACKGROUND CU EFECTE */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* Stratul 1: Posterele de cinema cu efect de miscare */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -5%;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 25%, rgba(7, 8, 12, 0.35) 0%, rgba(7, 8, 12, 0.92) 75%, var(--bg) 100%),
+    linear-gradient(to bottom, rgba(7, 8, 12, 0.45) 0%, var(--bg) 92%),
+    url("https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  filter: saturate(1.25) contrast(1.08);
+  animation: cinemaZoom 28s ease-in-out infinite alternate;
+}
+
+:root[data-theme="light"] body::before {
+  background-image:
+    radial-gradient(circle at 50% 25%, rgba(238, 241, 248, 0.65) 0%, rgba(238, 241, 248, 0.95) 75%, var(--bg) 100%),
+    linear-gradient(to bottom, rgba(238, 241, 248, 0.7) 0%, var(--bg) 90%),
+    url("https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop");
+  filter: saturate(0.9);
+}
+
+/* Stratul 2: Lumini ambientale (Rosu CineSync + Albastru Cinema) care plutesc pe fundal */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(650px circle at 12% 18%, rgba(255, 31, 68, 0.22), transparent 65%),
+    radial-gradient(550px circle at 88% 45%, rgba(70, 130, 255, 0.16), transparent 65%),
+    radial-gradient(500px circle at 45% 88%, rgba(160, 60, 255, 0.12), transparent 65%);
+  filter: blur(25px);
+  animation: ambientOrbs 14s ease-in-out infinite alternate;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+/* BUTOANE */
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 650;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-hover);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn {
+  min-height: 46px;
+  padding: 12px 28px;
+  border-radius: var(--radius-small);
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  min-height: 34px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.btn-danger:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+/* PANOU, MESAJE, STARE GOALĂ */
+
+.panel {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.panel h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 26px;
+  color: var(--text);
+  font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.panel h2::before {
+  content: "";
+  flex: 0 0 5px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+}
+
+.panel > p,
+.empty {
+  color: var(--muted);
+}
+
+/* EMPTY STATE */
+
+.empty-state {
+  padding: 32px 24px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.error {
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(229, 9, 20, 0.5);
+  border-radius: var(--radius-small);
+  background: rgba(229, 9, 20, 0.15);
+  color: var(--text);
+}
+
+.info {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* BADGE-URI NEON */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-film {
+  background: var(--film-bg);
+  color: var(--film);
+  box-shadow: 0 0 14px var(--film-glow);
+}
+
+.badge-serial {
+  background: var(--serial-bg);
+  color: var(--serial);
+  box-shadow: 0 0 14px var(--serial-glow);
+}
+
+.badge-documentar {
+  background: var(--documentar-bg);
+  color: var(--documentar);
+  box-shadow: 0 0 14px var(--documentar-glow);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-gutter: 20px;
+  }
+}

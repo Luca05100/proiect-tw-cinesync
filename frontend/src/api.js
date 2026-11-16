@@ -41,3 +41,7 @@ export function updateFilm(id, changes) {
 export function deleteFilm(id) {
   return request(`/filme/${id}`, { method: "DELETE" });
 }
+
+export function fetchFilm(id) {
+  return request(`/filme/${id}`);
+}
