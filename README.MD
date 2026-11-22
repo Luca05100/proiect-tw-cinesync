@@ -109,16 +109,41 @@ Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pur
 | S5-R5 | theme toggle switches light/dark mode | `frontend/src/App.jsx` | click theme button |
 | S5-R6 | README Stage 5 section + AI log | `README.md`, `ai-log/etapa-05.md` | read |
 | S5-R7 | commit "Stage 5: checklist" pushed | GitHub commit history | commit history |
-```[cite: 3]
 
-### Stage 8 Checklist
+### Stage 6 Checklist
+
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S8-R1 | header navigation changes page without reload | `frontend/src/App.jsx`, `frontend/src/components/Layout.jsx#L52-L58` | click links, watch Network |
-| S8-R2 | click on an item opens its detail page | `frontend/src/components/FilmCard.jsx#L26-L34`, `frontend/src/pages/FilmDetaliuPage.jsx` | click a title |
-| S8-R3 | refresh on the detail URL works; missing id shows an error | `frontend/src/pages/FilmDetaliuPage.jsx#L8-L55` | refresh `/filme/1`, open `/filme/999` |
-| S8-R4 | unknown URL shows the app 404 page | `frontend/src/App.jsx#L16` (path="*"), `frontend/src/pages/NotFoundPage.jsx` | open `/ceva` |
-| S8-R5 | each component has its .module.css; index.css only shared styles | `frontend/src/components`, `frontend/src/pages`, `frontend/src/index.css` | read |
-| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route `/<resource>/:id` | `Layout.jsx`, `FilmCard.jsx`, `FilmDetaliuPage.jsx`, `NotFoundPage.jsx` | querySelector in the console |
-| S8-R7 | README Stage 8 section + AI log | `README.MD`, `ai-log/etapa-08.md` | read |
+| S6-R1 | `npm run api` starts, route shows JSON | `frontend/package.json#L..`, `frontend/db.json` | open `localhost:3001/filme` |
+| S6-R2 | data no longer in React code | `frontend/src/App.jsx#L..` (`useState([])`) | read |
+| S6-R3 | loading message while waiting | `frontend/src/App.jsx#L..` | `--delay 4000` |
+| S6-R4 | error message when API is down | `frontend/src/App.jsx#L..-L..` | stop `npm run api`, refresh |
+| S6-R5 | fetch only in api.js, URL from env | `frontend/src/api.js#L..-L..`, `frontend/.env.example` | search for `fetch` |
+| S6-R6 | README Stage 6 section + AI log | `README.md`, `ai-log/etapa-06.md` | read |
+| S6-R7 | commit "Stage 6" pushed | link to the commit | commit history |
+
+### Stage 7 Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S7-R1 | controlled form: value + onChange on every field | `frontend/src/components/FilmForm.jsx#L..-L..` | read |
+| S7-R2 | empty title shows an error, nothing is sent | `frontend/src/components/FilmForm.jsx#L..` (`valideaza`) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | `frontend/src/App.jsx#L..` (`handleAdd`), `frontend/src/api.js#L..` | add, refresh |
+| S7-R4 | toggle and delete survive refresh | `frontend/src/App.jsx#L..-L..` | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | `frontend/src/components/FilmForm.jsx#L..-L..` | `--delay 3000`; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | `tw.json`, `frontend/src/components/FilmCard.jsx#L..-L..` | `querySelectorAll` in the console |
+| S7-R7 | README Stage 7 section + AI log | `README.md`, `ai-log/etapa-07.md` | read |
+| S7-R8 | commit "Stage 7" pushed | link to the commit | commit history |
+
+### Stage 8 Checklist
+
+| ID | Requirement | Where (permalink) | How to check |
+| :--- | :--- | :--- | :--- |
+| S8-R1 | header navigation changes page without reload | `frontend/src/App.jsx`, `frontend/src/components/Header.jsx` | click header links |
+| S8-R2 | click on an item opens its detail page | `frontend/src/components/FilmCard.jsx#L26` | click a film card |
+| S8-R3 | refresh on the detail URL works; missing id shows an error | `frontend/src/pages/FilmDetail.jsx` | refresh `/films/1`; open `/films/9999` |
+| S8-R4 | unknown URL shows the app 404 page | `frontend/src/App.jsx#L16` (`path="*"`), `frontend/src/pages/NotFound.jsx` | open `/abc` |
+| S8-R5 | each component has its .module.css; index.css only shared styles | `frontend/src/components/*.module.css`, `frontend/src/index.css` | read code |
+| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route `/<resource>/:id` | `frontend/src/components/FilmCard.jsx`, `frontend/src/pages/FilmDetail.jsx`, `frontend/src/App.jsx` | search `data-testid` in code |
+| S8-R7 | README Stage 8 section + AI log | `README.md`, `ai-log/etapa-08.md` | read |
 | S8-R8 | commit "Stage 8" pushed | link to the commit | commit history |
