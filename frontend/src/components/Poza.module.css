@@ -1,0 +1,17 @@
+.poza {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  background: var(--surface-soft);
+}
+
+/* Placeholder cand nu exista poza */
+.gol {
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface-soft));
+  color: var(--muted);
+  font-size: 3rem;
+  font-weight: 900;
+}

@@ -56,6 +56,11 @@
   }
 }
 
+/* Poza ocupa partea de sus a cardului */
+.poza {
+  aspect-ratio: 16 / 10;
+}
+
 .main {
   display: flex;
   align-items: flex-start;

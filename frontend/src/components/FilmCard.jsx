@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ETICHETE_TIP } from "../constants.js";
+import Poza from "./Poza.jsx";
 import styles from "./FilmCard.module.css";
 
 export default function FilmCard({ film, onToggle, onDelete }) {
@@ -9,6 +10,8 @@ export default function FilmCard({ film, onToggle, onDelete }) {
 
   return (
     <li className={cardClass} data-testid="item" data-id={film.id}>
+      <Poza film={film} className={styles.poza} />
+
       <div className={styles.main}>
         <input
           type="checkbox"

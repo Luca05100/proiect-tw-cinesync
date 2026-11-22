@@ -5,35 +5,68 @@
       "titlu": "Interstellar",
       "vazut": true,
       "tip": "film",
-      "an": 2014
+      "an": 2014,
+      "poza": "/posters/interstellar.jpg",
+      "nota": 8.7,
+      "durata": 169,
+      "genuri": "SF, Dramă",
+      "adaugat": "2026-11-10",
+      "descriere": "Un grup de exploratori călătorește printr-o gaură de vierme în căutarea unei noi case pentru omenire."
     },
     {
       "id": 2,
       "titlu": "Stranger Things",
+      "descriere": "Un grup de copii dintr-un orășel din Indiana dă peste forțe supranaturale după dispariția unui prieten.",
+      "sezoane": 4,
+      "genuri": "SF, Horror",
       "vazut": false,
       "tip": "serial",
-      "an": 2016
+      "an": 2016,
+      "poza": "/posters/stranger-things.jpg",
+      "nota": 8.6,
+      "durata": 50,
+      "adaugat": "2026-11-19"
     },
     {
       "id": 3,
       "titlu": "Planeta Pământ",
       "vazut": false,
       "tip": "documentar",
-      "an": 2006
+      "an": 2006,
+      "poza": "/posters/planeta-pamant.jpg",
+      "nota": 9.4,
+      "durata": 50,
+      "sezoane": 1,
+      "genuri": "Natură, Documentar",
+      "adaugat": "2026-11-15",
+      "descriere": "Un tur spectaculos al planetei, de la peșteri adânci la păduri și deșerturi, filmat în înaltă definiție."
     },
     {
       "id": 4,
       "titlu": "Inception",
       "vazut": false,
       "tip": "film",
-      "an": 2010
+      "an": 2010,
+      "poza": "/posters/inception.jpg",
+      "nota": 8.8,
+      "durata": 148,
+      "genuri": "SF, Acțiune",
+      "adaugat": "2026-11-17",
+      "descriere": "Un hoț specializat în furtul de secrete din vise primește misiunea de a planta o idee în mintea unei ținte."
     },
     {
       "id": 5,
       "titlu": "Breaking Bad",
-      "vazut": true,
+      "vazut": false,
       "tip": "serial",
-      "an": 2008
+      "an": 2008,
+      "poza": "/posters/breaking-bad.jpg",
+      "nota": 9.5,
+      "durata": 47,
+      "sezoane": 5,
+      "genuri": "Dramă, Crimă",
+      "adaugat": "2026-11-05",
+      "descriere": "Un profesor de chimie diagnosticat cu cancer ajunge să producă droguri pentru a-și asigura familia."
     }
   ]
 }

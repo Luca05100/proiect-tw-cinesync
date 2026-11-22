@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import FilmList from "../components/FilmList.jsx";
+import Poza from "../components/Poza.jsx";
 import FilmForm from "../components/FilmForm.jsx";
 import { createFilm, deleteFilm, fetchFilme, updateFilm } from "../api.js";
+import { ETICHETE_TIP } from "../constants.js";
+import { acumZile, formatDurata } from "../utils.js";
 import styles from "./FilmePage.module.css";
 
 const FILTRE = [
@@ -11,11 +15,18 @@ const FILTRE = [
   { key: "documentar", label: "Documentare" },
 ];
 
+// Element aleator dintr-o lista
+function alegeLaIntamplare(lista) {
+  return lista[Math.floor(Math.random() * lista.length)];
+}
+
 export default function FilmePage() {
   const [filme, setFilme] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filtru, setFiltru] = useState("toate");
+  const [heroId, setHeroId] = useState(null);
+  const { cautare } = useOutletContext(); // textul din bara de cautare
 
   /* Încărcăm filmele de la API la montarea componentei. */
   useEffect(() => {
@@ -81,11 +92,25 @@ export default function FilmePage() {
   const filmeDeVazut = filme.filter((film) => !film.vazut);
   const filmeVizionate = filme.filter((film) => film.vazut);
 
-  /* Primul titlu nevăzut din colecție devine hero. */
-  const heroFilm = filmeDeVazut[0] || null;
+  /* Hero: titlul ales la intamplare sau, implicit, primul nevazut. */
+  const heroFilm =
+    filmeDeVazut.find((film) => film.id === heroId) || filmeDeVazut[0] || null;
+
+  /* Alege un alt titlu nevazut decat cel afisat acum. */
+  function handleAltul() {
+    const alte = filmeDeVazut.filter((film) => film.id !== heroFilm.id);
+
+    if (alte.length > 0) {
+      setHeroId(alegeLaIntamplare(alte).id);
+    }
+  }
+
+  const termen = cautare.trim().toLowerCase();
 
   const dupaFiltru = (lista) =>
-    filtru === "toate" ? lista : lista.filter((film) => film.tip === filtru);
+    lista
+      .filter((film) => filtru === "toate" || film.tip === filtru)
+      .filter((film) => film.titlu.toLowerCase().includes(termen));
 
   const filmeFiltrate = dupaFiltru(filmeDeVazut);
   const filmeVizionateFiltrate = dupaFiltru(filmeVizionate);
@@ -120,21 +145,92 @@ export default function FilmePage() {
           {/* HERO SECTION */}
           {heroFilm && (
             <section className={styles.hero} aria-label="Următorul de văzut">
+              {/* Fundal: aceeasi poza, estompata */}
+              {heroFilm.poza && (
+                <div
+                  className={styles.heroFundal}
+                  style={{ backgroundImage: `url(${heroFilm.poza})` }}
+                  aria-hidden="true"
+                />
+              )}
+
+              {/* Poza din dreapta; pe ecran ingust ramane sub text */}
+              <Poza film={heroFilm} className={styles.heroPoza} />
+
               <p className={styles.heroLabel}>Urmează în lista ta</p>
               <h2 className={styles.heroTitle}>{heroFilm.titlu}</h2>
 
-              <p className={styles.heroDescription}>
-                Titlu salvat în colecția ta. Pornește când ești gata și
-                bifează-l după ce termini.
+              <p className={styles.heroMeta}>
+                <span className={`badge badge-${heroFilm.tip}`}>
+                  {ETICHETE_TIP[heroFilm.tip] ?? heroFilm.tip}
+                </span>
+                {heroFilm.an && <span>{heroFilm.an}</span>}
+                {heroFilm.sezoane && <span>{heroFilm.sezoane} sezoane</span>}
+                {heroFilm.durata && (
+                  <span>
+                    {formatDurata(heroFilm.durata)}
+                    {heroFilm.tip === "serial" && " / episod"}
+                  </span>
+                )}
+                {heroFilm.nota && (
+                  <span className={styles.nota}>★ {heroFilm.nota}</span>
+                )}
+                {heroFilm.genuri && <span>{heroFilm.genuri}</span>}
+                {heroFilm.adaugat && (
+                  <span>Adăugat {acumZile(heroFilm.adaugat)}</span>
+                )}
               </p>
 
-              <button
-                type="button"
-                className={styles.heroBtn}
-                onClick={() => handleToggle(heroFilm.id)}
-              >
-                Marchează ca văzut
-              </button>
+              <p className={styles.heroDescription}>
+                {heroFilm.descriere ||
+                  "Titlu salvat în colecția ta. Pornește când ești gata și bifează-l după ce termini."}
+              </p>
+
+              <div className={styles.heroActions}>
+                <button
+                  type="button"
+                  className={styles.heroBtn}
+                  onClick={() => handleToggle(heroFilm.id)}
+                >
+                  ✓ Marchează ca văzut
+                </button>
+
+                <button
+                  type="button"
+                  className={styles.heroBtnSecundar}
+                  onClick={handleAltul}
+                  disabled={filmeDeVazut.length < 2}
+                >
+                  ⤮ Alege altul la întâmplare
+                </button>
+              </div>
+
+              {/* Progresul din colectie */}
+              <div className={styles.progress}>
+                <p className={styles.progressLabel}>Progresul tău</p>
+                <p className={styles.progressCount}>
+                  {filmeVizionate.length}
+                  <span>/{filme.length}</span>
+                  <small>văzute</small>
+                </p>
+                <div
+                  className={styles.bar}
+                  role="progressbar"
+                  aria-valuemin={0}
+                  aria-valuemax={filme.length}
+                  aria-valuenow={filmeVizionate.length}
+                >
+                  <div
+                    className={styles.barFill}
+                    style={{
+                      width: `${(filmeVizionate.length / filme.length) * 100}%`,
+                    }}
+                  />
+                </div>
+                <p className={styles.progressNote}>
+                  Mai ai {filmeDeVazut.length} titluri de văzut.
+                </p>
+              </div>
             </section>
           )}
 

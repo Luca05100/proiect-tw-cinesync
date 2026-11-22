@@ -10,6 +10,8 @@ export default function FilmForm({ onAdd }) {
   const [titlu, setTitlu] = useState("");
   const [tip, setTip] = useState("film");
   const [an, setAn] = useState("");
+  const [poza, setPoza] = useState("");
+  const [descriere, setDescriere] = useState("");
   const [eroare, setEroare] = useState("");
   const [trimite, setTrimite] = useState(false);
 
@@ -28,6 +30,12 @@ export default function FilmForm({ onAdd }) {
     const anNumar = Number(anText);
     if (!Number.isInteger(anNumar) || anNumar < AN_MIN || anNumar > anCurent) {
       return `Anul trebuie să fie între ${AN_MIN} și ${anCurent}.`;
+    }
+
+    // Poza este optionala, dar daca exista trebuie sa fie adresa http(s)
+    const pozaText = poza.trim();
+    if (pozaText !== "" && !/^https?:\/\/\S+$/i.test(pozaText)) {
+      return "Poza trebuie să fie o adresă care începe cu http:// sau https://.";
     }
 
     return "";
@@ -53,12 +61,17 @@ export default function FilmForm({ onAdd }) {
         tip,
         an: Number(an.trim()),
         vazut: false,
+        // Campurile optionale se trimit doar daca au fost completate
+        ...(poza.trim() && { poza: poza.trim() }),
+        ...(descriere.trim() && { descriere: descriere.trim() }),
       });
 
       // Golim câmpurile doar după ce serverul a confirmat salvarea
       setTitlu("");
       setTip("film");
       setAn("");
+      setPoza("");
+      setDescriere("");
     } catch (err) {
       setEroare(err instanceof Error ? err.message : "Salvarea a eșuat.");
     } finally {
@@ -111,6 +124,27 @@ export default function FilmForm({ onAdd }) {
           placeholder="Ex: 2014"
           maxLength={4}
           data-testid="form-an"
+        />
+      </label>
+
+      <label className={styles.lat}>
+        Poză (adresă URL, opțional)
+        <input
+          type="text"
+          value={poza}
+          onChange={(e) => setPoza(e.target.value)}
+          placeholder="https://..."
+          data-testid="form-poza"
+        />
+      </label>
+
+      <label className={styles.lat}>
+        Descriere (opțional)
+        <textarea
+          value={descriere}
+          onChange={(e) => setDescriere(e.target.value)}
+          rows={2}
+          data-testid="form-descriere"
         />
       </label>
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchFilm } from "../api.js";
+import Poza from "../components/Poza.jsx";
 import { ETICHETE_TIP } from "../constants.js";
 import styles from "./FilmDetaliuPage.module.css";
 
@@ -65,6 +66,10 @@ export default function FilmDetaliuPage() {
       <h2 className={film.vazut ? styles.done : undefined} data-testid="detail-title">
         {film.titlu}
       </h2>
+
+      <Poza film={film} className={styles.poza} />
+
+      {film.descriere && <p className={styles.descriere}>{film.descriere}</p>}
 
       <dl className={styles.fields}>
         <dt>Format</dt>
