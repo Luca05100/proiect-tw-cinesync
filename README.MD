@@ -38,13 +38,14 @@ Movies can be added from the page. The form (`FilmForm`) is controlled and valid
 ## Stage 8: routing and detail page
 Three pages behind React Router: the list (`/`), a detail page at `/filme/:id` that fetches exactly one item from the API, and an about page (`/despre`), plus a 404 page for unknown addresses. A shared `Layout` (header with `NavLink`, `Outlet`, footer) wraps every page. Component styles moved to CSS Modules (`*.module.css` next to each component); `index.css` keeps only the colour variables and the shared classes.
 
-## How to run
-    cd frontend
-    npm install
-    npm run api   # terminal 1: mock API on http://localhost:3001
-    npm run dev   # terminal 2: the app
+## Stage 9: own backend
+json-server is gone. The API is an Express server in `backend/`, with REST routes (`/filme`), server side validation and CORS. Data is still kept in memory and resets on restart.
 
-Then open the address printed in the terminal (`http://localhost:5173`).
+## How to run
+    cd backend && npm install && npm run dev    # terminal 1, port 3001
+    cd frontend && npm install && npm run dev   # terminal 2, port 5173
+
+Then open `http://localhost:5173`. Quick check: `http://localhost:3001/health`.
 
 *(Note: The static mockup and Stage 2 console logic remain available in `mockup/index.html`.)*
 
@@ -57,7 +58,8 @@ Then open the address printed in the terminal (`http://localhost:5173`).
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
+- [x] Stage 9: own backend with Express
+- [ ] Stage 10: MariaDB and full CRUD
 
 ## AI usage
 Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pure JavaScript array methods and immutability verification in Stage 2, Vite/React setup in Stage 3, and component validation for Stage 4. Full details are documented in `ai-log/`.
