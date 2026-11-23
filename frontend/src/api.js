@@ -10,7 +10,9 @@ async function request(path, options = {}) {
   });
 
   if (!res.ok) {
-    throw new Error(`Eroare server: ${res.status}`);
+    // API-ul propriu raspunde cu { error: "..." }
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.error || `Eroare server: ${res.status}`);
   }
 
   // 204 No Content nu are corp
