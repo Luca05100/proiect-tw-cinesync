@@ -2,7 +2,7 @@
 
 ## Tools
 - Gemini
-- 
+- https://share.gemini.google/kBCyehxZEsCT
 
 ## Key requests
 ### 1. Express backend
