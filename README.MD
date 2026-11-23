@@ -69,81 +69,81 @@ Used Google Gemini for visual styling adaptation (Netflix-style dark theme), pur
 ### Stage 2 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S2-R1 | JS file linked, logs on page load | `mockup/index.html#L72` | open page, F12 |
-| S2-R2 | 3+ items with id, name, state, tag | `mockup/filme.js#L2-L8` | read |
-| S2-R3 | list, count, search, add, toggle, delete | `mockup/filme.js#L11-L65` | console output |
-| S2-R4 | add rejects empty name and invalid tag | `mockup/filme.js#L32-L41` | last 2 console lines |
-| S2-R5 | original array unchanged after add | `mockup/filme.js#L76` | console line |
-| S2-R6 | README Stage 2 section + AI log | `README.md`, `ai-log/stage-02.md` | read |
-| S2-R7 | commit "Stage 2" pushed | GitHub commit history | commit history |
+| S2-R1 | JS file linked, logs on page load | [`index.html L69`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/mockup/index.html#L69) | open page, F12 |
+| S2-R2 | 3+ items with id, name, state, tag | [`filme.js L3-L7`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/mockup/filme.js#L3-L7) | read |
+| S2-R3 | list, count, search, add, toggle, delete | [`filme.js L9-L57`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/mockup/filme.js#L9-L57) | console output |
+| S2-R4 | add rejects empty name and invalid tag | [`filme.js L29-L37`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/mockup/filme.js#L29-L37) | last 2 console lines |
+| S2-R5 | original array unchanged after add | [`filme.js L65-L67`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/mockup/filme.js#L65-L67) | console line |
+| S2-R6 | README Stage 2 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L18), [`stage-02.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-02.md) | read |
+| S2-R7 | commit "Stage 2" pushed | [Stage 2 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/67aa0feeba020806054e1654f56ad150a35d0892) | commit history |
 
 ### Stage 3 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S3-R1 | `npm run dev` starts without errors | `frontend/package.json` | `npm install`, `npm run dev` |
-| S3-R2 | app name and counter computed from data | `frontend/src/App.jsx#L8-L17` | edit data, save |
-| S3-R3 | data from README, not from the example | `frontend/src/App.jsx#L1-L5` | compare with README |
-| S3-R4 | stage 1 styles reused | `frontend/src/App.css` | look at the page |
-| S3-R5 | `node_modules` ignored, build passes | `frontend/.gitignore` | `npm run build` |
-| S3-R6 | README Stage 3 section + AI log | `README.md`, `ai-log/stage-03.md` | read |
-| S3-R7 | commit "Stage 3" pushed | GitHub commit history | commit history |
+| S3-R1 | `npm run dev` starts without errors | [`package.json L6-L12`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/package.json#L6-L12) | `npm install`, `npm run dev` |
+| S3-R2 | app name and counter computed from data | [`FilmePage.jsx L141-L143`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L141-L143) | edit data, save |
+| S3-R3 | data from README, not from the example | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L13) | compare with README |
+| S3-R4 | stage 1 styles reused | [`index.css`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/index.css) | look at the page |
+| S3-R5 | `node_modules` ignored, build passes | [`.gitignore L10-L12`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/.gitignore#L10-L12) | `npm run build` |
+| S3-R6 | README Stage 3 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L21), [`stage-03.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-03.md) | read |
+| S3-R7 | commit "Stage 3" pushed | [Stage 3 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/495661f0b945d5d556edf59ae0d60d3f24ad21be) | commit history |
 
 ### Stage 4 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S4-R1 | 2+ components in `src/components/` | `frontend/src/components/` | open folder |
-| S4-R2 | card receives data through props | `frontend/src/components/FilmCard.jsx` | read |
-| S4-R3 | map + key={id}, no console warnings | `frontend/src/components/FilmList.jsx` | F12, Console |
-| S4-R4 | message for empty list | `frontend/src/components/FilmList.jsx` | set array to `[]` |
-| S4-R5 | state changes the card look | `frontend/src/components/FilmCard.jsx` | toggle a done flag |
-| S4-R6 | README Stage 4 section + AI log | `README.md`, `ai-log/etapa-04.md` | read |
-| S4-R7 | commit "Stage 4" pushed | GitHub commit history | commit history |
+| S4-R1 | 2+ components in `src/components/` | [`frontend/src/components/`](https://github.com/Luca05100/proiect-tw-cinesync/tree/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components) | open folder |
+| S4-R2 | card receives data through props | [`FilmCard.jsx L6-L12`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L6-L12) | read |
+| S4-R3 | map + key={id}, no console warnings | [`FilmList.jsx L9-L19`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmList.jsx#L9-L19) | F12, Console |
+| S4-R4 | message for empty list | [`FilmList.jsx L5-L7`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmList.jsx#L5-L7) | set array to `[]` |
+| S4-R5 | state changes the card look | [`FilmCard.jsx L9`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L9) | toggle a done flag |
+| S4-R6 | README Stage 4 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L24), [`stage-04.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-04.md) | read |
+| S4-R7 | commit "Stage 4" pushed | [Stage 4 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/07b816ff539c7c370b36a63bde2e583f824e8cdb) | commit history |
 
 ### Stage 5 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S5-R1 | local state (`useState`) for list and theme | `frontend/src/App.jsx` | read code |
-| S5-R2 | add form placed above the list | `frontend/src/App.jsx` | test adding item |
-| S5-R3 | controlled checkbox toggles status | `frontend/src/components/FilmCard.jsx` | click checkbox |
-| S5-R4 | delete button removes item | `frontend/src/components/FilmCard.jsx` | click delete button |
-| S5-R5 | theme toggle switches light/dark mode | `frontend/src/App.jsx` | click theme button |
-| S5-R6 | README Stage 5 section + AI log | `README.md`, `ai-log/etapa-05.md` | read |
-| S5-R7 | commit "Stage 5: checklist" pushed | GitHub commit history | commit history |
+| S5-R1 | local state (`useState`) for list and theme | [`FilmePage.jsx L24-L29`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L24-L29) | read code |
+| S5-R2 | add form placed above the list | [`FilmePage.jsx L238`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L238) | test adding item |
+| S5-R3 | controlled checkbox toggles status | [`FilmCard.jsx L16-L20`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L16-L20) | click checkbox |
+| S5-R4 | delete button removes item | [`FilmCard.jsx L50-L57`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L50-L57) | click delete button |
+| S5-R5 | theme toggle switches light/dark mode | [`Layout.jsx L30-L43`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/Layout.jsx#L30-L43), [`Layout.jsx L107-L120`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/Layout.jsx#L107-L120) | click theme button |
+| S5-R6 | README Stage 5 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L29), [`stage-05.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-05.md) | read |
+| S5-R7 | commit "Stage 5: checklist" pushed | [Stage 5 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/fd60ebacd5b3ad39324e61e91afad35ac72b7a68) | commit history |
 
 ### Stage 6 Checklist
 
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S6-R1 | `npm run api` starts, route shows JSON | `frontend/package.json#L..`, `frontend/db.json` | open `localhost:3001/filme` |
-| S6-R2 | data no longer in React code | `frontend/src/App.jsx#L..` (`useState([])`) | read |
-| S6-R3 | loading message while waiting | `frontend/src/App.jsx#L..` | `--delay 4000` |
-| S6-R4 | error message when API is down | `frontend/src/App.jsx#L..-L..` | stop `npm run api`, refresh |
-| S6-R5 | fetch only in api.js, URL from env | `frontend/src/api.js#L..-L..`, `frontend/.env.example` | search for `fetch` |
-| S6-R6 | README Stage 6 section + AI log | `README.md`, `ai-log/etapa-06.md` | read |
-| S6-R7 | commit "Stage 6" pushed | link to the commit | commit history |
+| S6-R1 | `npm run api` starts, route shows JSON | [`package.json L11`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/package.json#L11), [`db.json`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/db.json) | open `localhost:3001/filme` |
+| S6-R2 | data no longer in React code | [`FilmePage.jsx L24`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L24) | read |
+| S6-R3 | loading message while waiting | [`FilmePage.jsx L121-L127`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L121-L127) | `--delay 4000` |
+| S6-R4 | error message when API is down | [`FilmePage.jsx L42-L47`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L42-L47), [`FilmePage.jsx L130-L137`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L130-L137) | stop `npm run api`, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [`api.js L1-L18`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/api.js#L1-L18), [`.env.example L1`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/.env.example#L1) | search for `fetch` |
+| S6-R6 | README Stage 6 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L32), [`stage-06.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [Stage 6 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/0250d27b7cd9ecf50b712fdd8817457298a5e617) | commit history |
 
 ### Stage 7 Checklist
 
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S7-R1 | controlled form: value + onChange on every field | `frontend/src/components/FilmForm.jsx#L..-L..` | read |
-| S7-R2 | empty title shows an error, nothing is sent | `frontend/src/components/FilmForm.jsx#L..` (`valideaza`) | submit empty, watch Network |
-| S7-R3 | added item shows in the list and survives refresh | `frontend/src/App.jsx#L..` (`handleAdd`), `frontend/src/api.js#L..` | add, refresh |
-| S7-R4 | toggle and delete survive refresh | `frontend/src/App.jsx#L..-L..` | toggle/delete, refresh |
-| S7-R5 | button disabled while sending, form cleared only on success | `frontend/src/components/FilmForm.jsx#L..-L..` | `--delay 3000`; stop API and submit |
-| S7-R6 | tw.json and the data-testid attributes from table 7.3 | `tw.json`, `frontend/src/components/FilmCard.jsx#L..-L..` | `querySelectorAll` in the console |
-| S7-R7 | README Stage 7 section + AI log | `README.md`, `ai-log/etapa-07.md` | read |
-| S7-R8 | commit "Stage 7" pushed | link to the commit | commit history |
+| S7-R1 | controlled form: value + onChange on every field | [`FilmForm.jsx L89-L149`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmForm.jsx#L89-L149) | read |
+| S7-R2 | empty title shows an error, nothing is sent | [`FilmForm.jsx L18-L42`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmForm.jsx#L18-L42), [`FilmForm.jsx L49-L53`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmForm.jsx#L49-L53) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | [`FilmePage.jsx L63-L66`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L63-L66), [`api.js L30-L32`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/api.js#L30-L32) | add, refresh |
+| S7-R4 | toggle and delete survive refresh | [`FilmePage.jsx L68-L90`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmePage.jsx#L68-L90) | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | [`FilmForm.jsx L56-L79`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmForm.jsx#L56-L79), [`FilmForm.jsx L151-L158`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmForm.jsx#L151-L158) | `--delay 3000`; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [`tw.json`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/tw.json), [`FilmCard.jsx L12`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L12), [`FilmCard.jsx L20`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L20), [`FilmCard.jsx L55`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L55) | `querySelectorAll` in the console |
+| S7-R7 | README Stage 7 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L35), [`stage-07.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-07.md) | read |
+| S7-R8 | commit "Stage 7" pushed | [Stage 7 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/cfb360c50bc6a6b7317819cadbe02589f305da58) | commit history |
 
 ### Stage 8 Checklist
 
 | ID | Requirement | Where (permalink) | How to check |
 | :--- | :--- | :--- | :--- |
-| S8-R1 | header navigation changes page without reload | `frontend/src/App.jsx`, `frontend/src/components/Header.jsx` | click header links |
-| S8-R2 | click on an item opens its detail page | `frontend/src/components/FilmCard.jsx#L26` | click a film card |
-| S8-R3 | refresh on the detail URL works; missing id shows an error | `frontend/src/pages/FilmDetail.jsx` | refresh `/films/1`; open `/films/9999` |
-| S8-R4 | unknown URL shows the app 404 page | `frontend/src/App.jsx#L16` (`path="*"`), `frontend/src/pages/NotFound.jsx` | open `/abc` |
-| S8-R5 | each component has its .module.css; index.css only shared styles | `frontend/src/components/*.module.css`, `frontend/src/index.css` | read code |
-| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route `/<resource>/:id` | `frontend/src/components/FilmCard.jsx`, `frontend/src/pages/FilmDetail.jsx`, `frontend/src/App.jsx` | search `data-testid` in code |
-| S8-R7 | README Stage 8 section + AI log | `README.md`, `ai-log/etapa-08.md` | read |
-| S8-R8 | commit "Stage 8" pushed | link to the commit | commit history |
+| S8-R1 | header navigation changes page without reload | [`App.jsx L12-L20`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/App.jsx#L12-L20), [`Layout.jsx L72-L82`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/Layout.jsx#L72-L82) | click header links |
+| S8-R2 | click on an item opens its detail page | [`FilmCard.jsx L30-L36`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L30-L36) | click a film card |
+| S8-R3 | refresh on the detail URL works; missing id shows an error | [`FilmDetaliuPage.jsx L8-L35`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmDetaliuPage.jsx#L8-L35), [`FilmDetaliuPage.jsx L45-L56`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmDetaliuPage.jsx#L45-L56) | refresh `/films/1`; open `/films/9999` |
+| S8-R4 | unknown URL shows the app 404 page | [`App.jsx L18`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/App.jsx#L18), [`NotFoundPage.jsx`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/NotFoundPage.jsx) | open `/abc` |
+| S8-R5 | each component has its .module.css; index.css only shared styles | [`frontend/src/components/*.module.css`](https://github.com/Luca05100/proiect-tw-cinesync/tree/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components), [`index.css`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/index.css) | read code |
+| S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route `/<resource>/:id` | [`FilmCard.jsx L12`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/components/FilmCard.jsx#L12), [`FilmDetaliuPage.jsx L61`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/pages/FilmDetaliuPage.jsx#L61), [`App.jsx L15`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/frontend/src/App.jsx#L15) | search `data-testid` in code |
+| S8-R7 | README Stage 8 section + AI log | [`README.MD`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/README.MD#L38), [`stage-08.md`](https://github.com/Luca05100/proiect-tw-cinesync/blob/2cafc591d0f25dcd0f379290110a0a0c7f7cfc2a/ai-log/stage-08.md) | read |
+| S8-R8 | commit "Stage 8" pushed | [Stage 8 commit](https://github.com/Luca05100/proiect-tw-cinesync/commit/9fd0984eb60d0d885d28f3cff79b8b8bc4a9b526) | commit history |
